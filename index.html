@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tarunika K S | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+:root{
+  --bg:#020617;
+  --panel:#0b1220;
+  --cyan:#2ef2d2;
+  --purple:#a78bfa;
+  --gold:#ffd166;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+#code-bg{position:fixed;inset:0;perspective:1200px;z-index:-10;}
+.code-symbol{
+  position:absolute;font-size:18px;font-weight:600;
+  color:rgba(46,242,210,.35);
+  animation:codeFloat linear infinite;
+}
+@keyframes codeFloat{
+  from{transform:translateY(120vh) translateZ(-300px);}
+  to{transform:translateY(-140vh) translateZ(400px);}
+}
+
+nav{position:fixed;top:0;left:0;right:0;padding:18px 6%;backdrop-filter:blur(12px);z-index:10;}
+nav ul{display:flex;justify-content:flex-end;gap:28px;list-style:none;}
+nav ul li{cursor:pointer;color:var(--muted);transition:.3s;}
+nav ul li:hover{color:var(--cyan);}
+
+section{min-height:100vh;padding:110px 8%;display:flex;align-items:center;justify-content:center;}
+.container{max-width:1200px;width:100%;}
+
+.home{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;}
+.home h1{font-size:4rem;font-weight:800;}
+.name{
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.pills{display:flex;gap:14px;margin:26px 0;flex-wrap:wrap;}
+.pill{padding:10px 22px;border-radius:30px;background:rgba(255,255,255,.06);}
+.home p{color:var(--muted);font-size:1.1rem;max-width:520px;}
+.buttons{margin-top:36px;display:flex;gap:20px;}
+.btn{padding:14px 30px;border-radius:30px;border:none;cursor:pointer;font-weight:600;transition:.3s;}
+.btn.primary{background:var(--cyan);color:#020617;}
+.btn.outline{background:transparent;border:2px solid var(--cyan);color:var(--text);}
+.btn:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(46,242,210,.4);}
+
+.holo{background:linear-gradient(160deg,#0f172a,#020617);border-radius:28px;padding:50px 40px;}
+.holo-text{font-size:1.8rem;font-weight:600;color:var(--gold);opacity:0;animation:cycle 12s infinite;}
+.holo-text:nth-child(1){animation-delay:0s;}
+.holo-text:nth-child(2){animation-delay:2.4s;}
+.holo-text:nth-child(3){animation-delay:4.8s;}
+.holo-text:nth-child(4){animation-delay:7.2s;}
+.holo-text:nth-child(5){animation-delay:9.6s;}
+@keyframes cycle{
+  0%,15%{opacity:0;}
+  25%,40%{opacity:1;}
+  60%,100%{opacity:0;}
+}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.skill-card{background:var(--panel);padding:36px;border-radius:26px;transition:.4s;}
+.skill-card:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(167,139,250,.3);}
+.skill-card i{font-size:2rem;color:var(--cyan);}
+.skill-card h3{margin:20px 0;color:var(--gold);}
+.skill-card p{color:var(--muted);}
+
+.project{background:var(--panel);border-radius:26px;margin-bottom:30px;overflow:hidden;transition:.4s;}
+.project:hover{transform:translateY(-10px);box-shadow:0 30px 90px rgba(46,242,210,.35);}
+.project-img{height:180px;background:linear-gradient(135deg,#1e293b,#020617);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--cyan);}
+.project-content{padding:30px;}
+.details{display:none;margin-top:14px;}
+.project:hover .details{display:block;}
+.badges{display:flex;gap:12px;flex-wrap:wrap;}
+.badge{padding:8px 16px;border-radius:20px;background:rgba(255,255,255,.08);}
+
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+.cert{padding:18px;border-radius:18px;background:rgba(255,255,255,.06);transition:.35s;}
+.cert:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 14px 40px rgba(46,242,210,.35);}
+
+.dance-card{
+  margin-top:50px;padding:45px;border-radius:30px;
+  background:linear-gradient(135deg,#1e293b,#0b1220);
+  border:1px solid rgba(255,215,0,.4);
+  animation:pulse 2.5s infinite alternate;
+}
+@keyframes pulse{
+  from{box-shadow:0 0 25px rgba(255,215,0,.3);}
+  to{box-shadow:0 0 65px rgba(255,215,0,.7);}
+}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+.info-card,.form-card{background:rgba(255,255,255,.04);border-radius:26px;padding:40px;}
+.info-item{
+  display:flex;align-items:center;gap:18px;padding:18px;
+  background:rgba(255,255,255,.05);
+  border-radius:18px;margin-bottom:18px;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+.icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  display:flex;align-items:center;justify-content:center;color:#020617;
+}
+.socials a{
+  font-size:1.8rem;color:var(--cyan);
+  animation:float 2.8s infinite;
+  transition:.3s;
+}
+.socials a:hover{transform:scale(1.3);color:var(--purple);}
+
+label{display:block;margin:18px 0 6px;color:var(--muted);}
+input,textarea{
+  width:100%;padding:16px 18px;border-radius:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--text);
+}
+.send-btn{
+  margin-top:40px;width:100%;padding:18px;
+  border:none;border-radius:22px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  font-weight:700;cursor:pointer;transition:.4s;
+}
+.send-btn:hover{transform:scale(1.05);}
+</style>
+</head>
+
+<body>
+
+<div id="code-bg"></div>
+
+<nav>
+<ul>
+<li onclick="go('home')">Home</li>
+<li onclick="go('skills')">Skills</li>
+<li onclick="go('projects')">Projects</li>
+<li onclick="go('achievements')">Achievements</li>
+<li onclick="go('contact')">Contact</li>
+</ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+<div class="container home">
+<div>
+<h1>Hi, I’m <span class="name">Tarunika K S</span></h1>
+<div class="pills">
+<div class="pill">Computer Science & Design</div>
+<div class="pill">Frontend Developer</div>
+<div class="pill">UI/UX Designer</div>
+</div>
+<p>A BE Computer Science and Design student passionate about refined digital experiences.</p>
+<div class="buttons">
+<button class="btn primary" onclick="go('projects')">View My Work</button>
+<button class="btn outline" onclick="go('contact')">Get in Touch</button>
+</div>
+</div>
+<div class="holo">
+<div class="holo-text">Team Collaboration</div>
+<div class="holo-text">Communication</div>
+<div class="holo-text">Leadership</div>
+<div class="holo-text">Problem Solving</div>
+<div class="holo-text">Time Management</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="container">
+<h2>Core Capabilities</h2>
+<div class="cards">
+<div class="skill-card">
+<i class="fa-solid fa-code"></i>
+<h3>Frontend Engineering</h3>
+<p>Building responsive, accessible, and performance-driven web interfaces.</p>
+</div>
+<div class="skill-card">
+<i class="fa-solid fa-palette"></i>
+<h3>Experience Design</h3>
+<p>Crafting intuitive user journeys through thoughtful UI and UX practices.</p>
+</div>
+<div class="skill-card">
+<i class="fa-solid fa-microchip"></i>
+<h3>Smart Systems</h3>
+<p>Integrating embedded logic and IoT concepts into practical solutions.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
+
+<div class="project">
+<div class="project-img"><i class="fa-solid fa-car"></i></div>
+<div class="project-content">
+<h3>Smart Parking System</h3>
+<p>Real-time parking space tracking to improve traffic flow.</p>
+<div class="details">
+<p>Intelligent monitoring solution displaying live slot availability.</p>
+<div class="badges">
+<span class="badge">Live Detection</span>
+<span class="badge">System Optimization</span>
+<span class="badge">Web Dashboard</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="project">
+<div class="project-img"><i class="fa-solid fa-seedling"></i></div>
+<div class="project-content">
+<h3>Smart Freshness Tracker</h3>
+<p>Monitoring food quality using environmental conditions.</p>
+<div class="details">
+<p>Sensor-driven freshness evaluation system.</p>
+<div class="badges">
+<span class="badge">Environmental Data</span>
+<span class="badge">Quality Alerts</span>
+<span class="badge">Automation</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+<div class="container">
+<h2>Professional Credentials</h2>
+
+<div class="cert-grid">
+<div class="cert">Interface Design Project (Figma)</div>
+<div class="cert">Advanced HTML & CSS Development</div>
+<div class="cert">NoSQL Database Foundations</div>
+<div class="cert">Object-Oriented Programming with Java</div>
+<div class="cert">Core Python Programming</div>
+<div class="cert">Networking Fundamentals</div>
+<div class="cert">Modern JavaScript Concepts</div>
+<div class="cert">User Experience & Interface Design</div>
+</div>
+
+<!-- REPLACED CO-CURRICULAR EXCELLENCE -->
+<div class="dance-card">
+<h3>Co-Curricular Excellence</h3>
+<p>
+A dedicated Bharatanatyam dancer with national-level recognition including
+Nobel World Records and Limca Book of Records, showcasing discipline,
+artistry, and commitment.
+</p>
+</div>
+</div>
+</section>
+
+<!-- CONTACT (REPLACED EXACTLY AS REQUESTED) -->
+<section id="contact">
+<div class="container contact">
+<div class="info-card">
+<h2>Contact Information</h2>
+<div class="info-item"><div class="icon"><i class="fa-solid fa-envelope"></i></div>kstarunika1511@gmail.com</div>
+<div class="info-item"><div class="icon"><i class="fa-solid fa-location-dot"></i></div>Chennai, India</div>
+<div class="socials">
+<a href="https://github.com/tarunikaks" target="_blank"><i class="fa-brands fa-github"></i></a>
+<a href="https://www.linkedin.com/in/tarunika-k-s/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+</div>
+</div>
+
+<div class="form-card">
+<h2>Send a Message</h2>
+<form id="contact-form">
+<label>Name</label><input type="text" name="name" required>
+<label>Email</label><input type="email" name="email" required>
+<label>Message</label><textarea name="message" required></textarea>
+<button class="send-btn">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+
+<script>
+emailjs.init("Sp5slza0X8p5BxzbS");
+
+document.getElementById("contact-form").addEventListener("submit",function(e){
+e.preventDefault();
+emailjs.sendForm("service_2eyq428","template_kkdg27h",this)
+.then(()=>alert("Message sent successfully!"),
+()=>alert("Failed to send message"));
+});
+
+const bg=document.getElementById("code-bg");
+const symbols=["{","}","<",">","/",";","()","[]"];
+for(let i=0;i<160;i++){
+const s=document.createElement("div");
+s.className="code-symbol";
+s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=15+Math.random()*30+"s";
+bg.appendChild(s);
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
